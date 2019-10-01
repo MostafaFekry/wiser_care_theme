@@ -78,13 +78,10 @@ fixtures = [{"dt": "Custom Field", "filters": [["name", "in", [
 		"en",
 		"ar"
     ]]]},
-    {"dt": "Website Languages", "filters": [["name", "in", [
-		"en",
-		"ar"
-    ]]]},
     {"dt": "Top Bar Item"},
     {"dt": "Website Home Page"},
     {"dt": "Website About Us Settings"},
+    {"dt": "Wiser Website Settings"},
     {"dt": "Website Contact Us Settings"}
 ]
 
