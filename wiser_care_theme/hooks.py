@@ -73,7 +73,19 @@ fixtures = [{"dt": "Custom Field", "filters": [["name", "in", [
 		"Website Slideshow Item-set_position",
 		"Company History-old_year",
 		"Sales Invoice-due_date_payment"
-	]]]}
+	]]]},
+    {"dt": "Language", "filters": [["name", "in", [
+		"en",
+		"ar"
+    ]]]},
+    {"dt": "Website Languages", "filters": [["name", "in", [
+		"en",
+		"ar"
+    ]]]},
+    {"dt": "Top Bar Item"},
+    {"dt": "Website Home Page"},
+    {"dt": "Website About Us Settings"},
+    {"dt": "Website Contact Us Settings"}
 ]
 
 # Generators

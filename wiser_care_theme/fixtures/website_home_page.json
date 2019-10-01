@@ -1,0 +1,152 @@
+[
+ {
+  "agents": [
+   {
+    "agents_name": "wiser-care", 
+    "image": null, 
+    "route": null
+   }, 
+   {
+    "agents_name": "al-arabia", 
+    "image": null, 
+    "route": null
+   }, 
+   {
+    "agents_name": "cudy-future", 
+    "image": null, 
+    "route": null
+   }, 
+   {
+    "agents_name": "greenman", 
+    "image": "/files/1.jpg", 
+    "route": null
+   }, 
+   {
+    "agents_name": "ultra-care-farma", 
+    "image": null, 
+    "route": null
+   }, 
+   {
+    "agents_name": "wiser-for-pharmaceutical-industries", 
+    "image": null, 
+    "route": null
+   }, 
+   {
+    "agents_name": "nile", 
+    "image": "/files/6.jpg", 
+    "route": null
+   }
+  ], 
+  "agents_description": null, 
+  "agents_section_title": "Agents", 
+  "allow_display_agents_section": 1, 
+  "allow_display_products_groups": 1, 
+  "company": "Wiser Care", 
+  "content_image": "/files/owners.jpg", 
+  "content_title": "About Us", 
+  "description": "Wiser care has many strength points and a nearly complete portfolio. <br>The range of product includes Antibiotics, Anticoccidial, antiparasitic, antimycotoxin, enzymes, vitamins , minerals. The products are local and imported,WSP, Feed additives and injection.<br> The number of products are 40 products.", 
+  "docstatus": 0, 
+  "doctype": "Website Home Page", 
+  "first_tab_title": "Wiser Care", 
+  "fourth_tab_description": "(202)251-65850", 
+  "fourth_tab_title": "Contact Us", 
+  "link_route": "/aboutus", 
+  "link_title": "More About us", 
+  "logo_icon": "/files/favicon 2019-03-08 21:32:13.png", 
+  "main_section": null, 
+  "modified": "2019-10-01 03:39:20.816421", 
+  "name": "Website Home Page", 
+  "products_group_description": null, 
+  "products_group_section_title": "Medicinal Effect", 
+  "products_groups": [
+   {
+    "description": null, 
+    "image": "/files/productsgroup 2019-03-10 05:06:26.png", 
+    "item_group_name": "Anti Mycotoxin", 
+    "route": null
+   }, 
+   {
+    "description": null, 
+    "image": "/files/productsgroup 2019-03-10 05:27:49.png", 
+    "item_group_name": "Antibiotics", 
+    "route": null
+   }, 
+   {
+    "description": null, 
+    "image": "/files/productsgroup.png", 
+    "item_group_name": "Anticoccidial", 
+    "route": null
+   }, 
+   {
+    "description": null, 
+    "image": "/files/productsgroup 2019-03-10 04:53:27.png", 
+    "item_group_name": "Antiviral", 
+    "route": null
+   }, 
+   {
+    "description": "", 
+    "image": "/files/productsgroup 2019-03-10 05:13:00.png", 
+    "item_group_name": "Disinfectants", 
+    "route": null
+   }, 
+   {
+    "description": null, 
+    "image": "/files/productsgroup 2019-03-10 05:16:41.png", 
+    "item_group_name": "Diuretics", 
+    "route": null
+   }, 
+   {
+    "description": null, 
+    "image": "/files/productsgroup 2019-03-10 05:20:26.png", 
+    "item_group_name": "Feed Additives", 
+    "route": null
+   }, 
+   {
+    "description": null, 
+    "image": "/files/productsgroup 2019-03-10 05:21:27.png", 
+    "item_group_name": "Liver Tonic", 
+    "route": null
+   }, 
+   {
+    "description": null, 
+    "image": "/files/productsgroup 2019-03-10 05:31:36.png", 
+    "item_group_name": "Respiratory stimulant and bronchodilator", 
+    "route": null
+   }, 
+   {
+    "description": null, 
+    "image": "/files/productsgroup 2019-03-10 05:25:34.png", 
+    "item_group_name": "Vitamin, Minerals, Promoter", 
+    "route": null
+   }
+  ], 
+  "products_url": "products/medicinal-effect", 
+  "second_tab_link": "/files/WiserCareEnglishBrochures.pdf", 
+  "second_tab_link_target": "blank", 
+  "second_tab_title": "Our Brochures", 
+  "seo_messages_details": [
+   {
+    "description": "He was X- sales supervisor at Deltavet center and Intermedica Vet, Khaled was a partner and owner of a pharmaceutical Veterinary Company since 2013<br> Wiser Care is an extension of his experience as entrepreneur<br> He has 10 years\u2019 experience in marketing of Vet. Medicine and feed additives<br> He has full knowledge of management and customer relationships.", 
+    "image": null, 
+    "position": "Owner and General Manager", 
+    "title": "Dr. Khaled Nabil"
+   }, 
+   {
+    "description": "Dr. Ahmed was the sales manager of Intermedica Vet company for 9 years.<br> he has a massive relations and deep experience in veterinary markets and he is setting the sales plans and marketing strategy.", 
+    "image": "/files/drahmed.jpeg", 
+    "position": "Owner and CEO", 
+    "title": "Dr. Ahmed Rashad"
+   }, 
+   {
+    "description": "Dr Hossam was the technical manager of Deltavet center, Intermedica Vet and Wadi poultry for 10 years. He is responsible for all technical and registration related issues, and he is the contact link between wiser care and all agencies (Cudy Future , Hungary - Greenman, Hungary - Ultracare,  Italy - El Nile Co for Pharmaceutical and Chemical industries - Arabian Co. for Pharmaceutical and Chemical industries)", 
+    "image": "/files/drhossam.jpeg", 
+    "position": "Owner and Technical Manager", 
+    "title": "Dr. Hossam Mahmoud"
+   }
+  ], 
+  "slideshow": "Homepage Slideshow", 
+  "third_tab_description": "<div class=\"info custom-info\">\n\t\t\t\t\t\t\t\t\t<span>Sun-Thur</span>\n\t\t\t\t\t\t\t\t\t<span>8:30 am to 5:00 pm</span>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t<div class=\"info custom-info\">\n\t\t\t\t\t\t\t\t\t<span>Saturday</span>\n\t\t\t\t\t\t\t\t\t<span>9:30 am to 1:00 pm</span>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t<div class=\"info custom-info\">\n\t\t\t\t\t\t\t\t\t<span>Friday</span>\n\t\t\t\t\t\t\t\t\t<span>Closed</span>\n\t\t\t\t\t\t\t\t</div>", 
+  "third_tab_title": "Opening Hours", 
+  "title": null
+ }
+]

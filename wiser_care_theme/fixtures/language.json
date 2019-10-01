@@ -1,0 +1,22 @@
+[
+ {
+  "based_on": null, 
+  "docstatus": 0, 
+  "doctype": "Language", 
+  "flag": "eg", 
+  "language_code": "ar", 
+  "language_name": "\u0627\u0644\u0639\u0631\u0628\u064a\u0629", 
+  "modified": "2019-09-30 21:04:31.112875", 
+  "name": "ar"
+ }, 
+ {
+  "based_on": null, 
+  "docstatus": 0, 
+  "doctype": "Language", 
+  "flag": "us", 
+  "language_code": "en", 
+  "language_name": "English", 
+  "modified": "2019-04-14 20:39:40.545831", 
+  "name": "en"
+ }
+]

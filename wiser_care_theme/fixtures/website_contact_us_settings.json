@@ -1,0 +1,25 @@
+[
+ {
+  "address_line1": "Building 15, Area 87, Segment 13, behind Carrefour New", 
+  "address_line2": null, 
+  "address_title": "Head Office", 
+  "city": "Maadi", 
+  "country": "Egypt", 
+  "docstatus": 0, 
+  "doctype": "Website Contact Us Settings", 
+  "email_id": "info@wiser-care.com", 
+  "form_description": null, 
+  "form_title": "Send a Message to Us", 
+  "forward_to_email": "", 
+  "google_maps": "<iframe allowfullscreen=\"\" class=\"google-ma h-100 mb-0\" frameborder=\"0\" src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3456.378497135312!2d31.315144314759156!3d29.96855062910949!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1458395befabd4f7%3A0x6ecf9533478b5e3e!2sWiser+Care+Pharmaceutical+Company!5e0!3m2!1sen!2seg!4v1551269364311\" style=\"min-height: 400px; border: 0;\" width=\"100%\"></iframe>", 
+  "heading": "Contact Us", 
+  "introduction": null, 
+  "modified": "2019-10-01 02:16:34.467795", 
+  "name": "Website Contact Us Settings", 
+  "phone": "+20225165850", 
+  "pincode": null, 
+  "query_options": null, 
+  "skype": null, 
+  "state": "Cairo"
+ }
+]

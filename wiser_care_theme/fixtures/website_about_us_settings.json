@@ -1,0 +1,59 @@
+[
+ {
+  "company_history": [
+   {
+    "highlight": null, 
+    "image": "/files/history-2 2019-10-01 00:10:09.jpg", 
+    "old_year": "2018", 
+    "title": "New Partners", 
+    "year": "2018"
+   }, 
+   {
+    "highlight": null, 
+    "image": "/files/history-1 2019-10-01 00:10:31.jpg", 
+    "old_year": "2017", 
+    "title": "Foundation", 
+    "year": "2017"
+   }
+  ], 
+  "company_history_heading": "Our History", 
+  "company_introduction": "<h1 style=\"text-align: center;\"><strong style=\"background-color: rgb(255, 255, 255); color: rgb(33, 37, 41);\">Wiser care, We always there to Care</strong></h1><div style=\"text-align: center;\"><span style=\"background-color: rgb(255, 255, 255); color: rgb(119, 119, 119);\">Wiser care has many strength points and a nearly complete portfolio. The range of product includes Antibiotics, Anticoccidial, antiparasitic, antimycotoxin, enzymes, vitamins , minerals. The products are local and imported,WSP, Feed additives and injection.\u00a0The number of products are 40 products</span></div>", 
+  "docstatus": 0, 
+  "doctype": "Website About Us Settings", 
+  "footer": null, 
+  "history_description": "How we started", 
+  "mission_description": "Is to provide society with excellent products and perfect services by creation of an innovative solutions that improve the quality of the animal life and satisfy customer needs.", 
+  "mission_title": "Our Mission", 
+  "modified": "2019-10-01 00:27:10.426352", 
+  "name": "Website About Us Settings", 
+  "show_sidebar": 0, 
+  "slideshow": null, 
+  "team_members": [
+   {
+    "bio": "He was X- sales supervisor at Deltavet center and Intermedica Vet, Khaled was a partner and owner of a pharmaceutical Veterinary Company since 2013<br> Wiser Care is an extension of his experience as entrepreneur<br> He has 10 years\u2019 experience in marketing of Vet. Medicine and feed additives<br> He has full knowledge of management and customer relationships.", 
+    "full_name": "Dr. Khaled Nabil", 
+    "image_link": null, 
+    "position": "Owner and General Manager"
+   }, 
+   {
+    "bio": "Dr. Ahmed was the sales manager of Intermedica Vet company for 9 years.<br> he has a massive relations and deep experience in veterinary markets and he is setting the sales plans and marketing strategy.", 
+    "full_name": "Dr. Ahmed Rashad", 
+    "image_link": null, 
+    "position": "Owner and CEO"
+   }, 
+   {
+    "bio": "Dr Hossam was the technical manager of Deltavet center, Intermedica Vet and Wadi poultry for 10 years. He is responsible for all technical and registration related issues, and he is the contact link between wiser care and all agencies (Cudy Future , Hungary - Greenman, Hungary - Ultracare,  Italy - El Nile Co for Pharmaceutical and Chemical industries - Arabian Co. for Pharmaceutical and Chemical industries)", 
+    "full_name": "Dr. Hossam Mahmoud", 
+    "image_link": null, 
+    "position": "Owner and Technical Manager"
+   }
+  ], 
+  "team_members_heading": null, 
+  "title": "About Us", 
+  "vision_description": "Is to lead animal health industry in Egypt and  Middle East by making  an extraordinary improvement in veterinary  fields through the most advanced technologies and ideas.", 
+  "vision_title": "Our Vision", 
+  "website_sidebar": null, 
+  "why_us_description": "Wiser care has many strength points and a nearly complete portfolio.", 
+  "why_us_title": "Why Us"
+ }
+]
