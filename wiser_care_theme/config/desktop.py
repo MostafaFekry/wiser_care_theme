@@ -6,9 +6,12 @@ def get_data():
 	return [
 		{
 			"module_name": "Wiser Care Theme",
-			"color": "grey",
-			"icon": "octicon octicon-file-directory",
+			"category": "Places",
+			"label": _("Wiser Care Theme"),
+			"color": "#bdc3c7",
+			"reverse": 1,
+			"icon": "octicon octicon-globe",
 			"type": "module",
-			"label": _("Wiser Care Theme")
+			"description": "Custom site for Wiser Care."
 		}
 	]
