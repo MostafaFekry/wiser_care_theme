@@ -1,0 +1,11 @@
+<nav id="sub-menu">
+	<ul>
+	{% for page in footer_items %}
+		{% if not page.parent_label -%}
+			{%- if not page.child_items -%}
+			<li data-label='{{ _(page.label) }}'><i class="fas fa-angle-right"></i><a href="{{ (page.url or '')|abs_url }}" class="ml-1 text-decoration-none" {{ page.target or ''}}> {{ _(page.label) }}</a></li>
+			{%- endif -%}
+		{%- endif %}
+	{% endfor %}
+	</ul>
+</nav>

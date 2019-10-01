@@ -1,0 +1,18 @@
+include MANIFEST.in
+include requirements.txt
+include *.json
+include *.md
+include *.py
+include *.txt
+recursive-include wiser_care_theme *.css
+recursive-include wiser_care_theme *.csv
+recursive-include wiser_care_theme *.html
+recursive-include wiser_care_theme *.ico
+recursive-include wiser_care_theme *.js
+recursive-include wiser_care_theme *.json
+recursive-include wiser_care_theme *.md
+recursive-include wiser_care_theme *.png
+recursive-include wiser_care_theme *.py
+recursive-include wiser_care_theme *.svg
+recursive-include wiser_care_theme *.txt
+recursive-exclude wiser_care_theme *.pyc

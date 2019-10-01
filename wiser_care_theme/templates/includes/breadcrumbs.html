@@ -1,0 +1,7 @@
+{% if parents and parents|length > 0 %}
+<ul class="breadcrumb d-block text-md-right breadcrumb-light" itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+	{% for parent in parents %}
+	<li><a href="{{ url_prefix }}{{ parent.route | abs_url }}" itemprop="url">{{ _(parent.title or parent.label or parent.name or "") }}</a></li>
+	{% endfor %}
+</ul>
+{% endif %}

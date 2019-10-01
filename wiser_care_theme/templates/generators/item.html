@@ -1,0 +1,173 @@
+{% extends "templates/web.html" %}
+
+{% block title %} {{ title }} {% endblock %}
+
+{% block breadcrumbs %}
+	{% include "templates/includes/breadcrumbs.html" %}
+{% endblock %}
+
+
+{% block slideshow %}
+<!-- slideshow -->
+{% endblock %}
+
+{% if sidebarshow_item_group %}
+{% block sidebar %}
+{% endblock %}
+{% endif %}
+
+{% block page_content %}
+{% if sidebarshow_item_group %}
+<div class="row">
+{% include "templates/includes/sidebarshow_item_group.html" %}
+<div class="col-lg-9">
+{% endif %}
+{% from "templates/includes/macros.html" import product_image %}
+
+		<div class="row" itemscope itemtype="http://schema.org/Product">
+			<div class="col-lg-6">
+				<div class="owl-carousel owl-theme" data-plugin-options="{'items': 1}">
+				{% if slideshow %}
+				{% set slideshow_items = frappe.get_list(doctype="Website Slideshow Item",  fields=["image"], filters={ "parent": doc.slideshow }) %}
+					{%- for slideshow_item in slideshow_items -%}
+						{% set image_src = slideshow_item['image'] %}
+						{% if image_src %}
+					<div>
+						<img alt="" class="img-fluid" src="{{ image_src }}">
+					</div>
+						{% endif %}
+					{% endfor %}
+				{% else %}
+					<div>
+						{{ product_image(website_image, "product-full-image") }}
+					</div>
+				{% endif %}
+
+				</div>
+
+			</div>
+
+			<div class="col-lg-6">
+
+				<div class="summary entry-summary">
+
+					<h1 class="mb-0 font-weight-bold text-7" itemprop="name">{{ _(item_name) }}</h1>
+					<p class="text-muted">
+						{{ _("Group") }}: <span itemprop="productID">{{ _(item_group) }}</span>
+					</p>
+					{% set item_medication_type, item_species_name, item_agent_name = frappe.db.get_value('Item', name, ['medication_type', 'species_name', 'agent_name']) %}
+					{% if item_medication_type %}
+					<p class="text-primary font-weight-semibold mb-1 text-4">{{ _("Medicinal Type") }}:</p>
+					<p class="text-secondarymb-3">{{ _(item_medication_type) }}
+					{%- endif %}
+					{% if item_species_name %}
+					<p class="text-primary font-weight-semibold mb-1 text-4">{{ _("Species") }}:</p>
+					<p class="text-secondarymb-3"><strong>{{ _(item_species_name) }}</strong>
+					{%- endif %}
+					{% if item_agent_name %}
+					<p class="text-primary font-weight-semibold mb-1 text-4">{{ _("Agent") }}:</p>
+					<p class="text-secondarymb-3"><strong>{{ _(item_agent_name) }}</strong>
+					{%- endif %}
+					
+					{% if has_variants and attributes %}
+					<br>
+					<div class="item-attribute-selectors">
+						{% for d in attributes %}
+						{% if attribute_values[d.attribute] -%}
+						<div class="item-view-attribute {% if (attribute_values[d.attribute] | len)==1 -%} hidden {%- endif %}"
+								style="margin-bottom: 10px;">
+							<p class="text-primary font-weight-semibold mb-1 text-4 text-muted">{{ _(d.attribute) }}</p>
+							<select class="form-control"
+								style="max-width: 140px"
+								data-attribute="{{ d.attribute }}">
+							{% for value in attribute_values[d.attribute] %}
+							<option value="{{ value }}"
+							{% if selected_attributes and selected_attributes[d.attribute]==value -%}
+								selected
+							{%- elif disabled_attributes and value in disabled_attributes.get(d.attribute, []) -%}
+								disabled
+							{%- endif %}>
+								{{ _(value) }}
+							</option>
+							{% endfor %}
+							</select>
+						</div>
+						{%- endif %}
+						{% endfor %}
+
+						
+					</div>
+					{% endif %}
+					<p class="price">
+						<span class="item-price amount hide" itemprop="price"></span>
+					</p>
+					<p class="mb-4" itemprop="description">{{ web_long_description or description or _("No description given") }} </p>
+
+
+				</div>
+
+
+			</div>
+		</div>
+		{% if website_specifications %}
+	<div class="row">
+		<div class="col">
+			<h4 class="text-primary mb-4">{{ _("Specifications") }}</h4>
+
+			<div class="row">
+				<div class="col-lg-4">
+					<div class="tabs tabs-vertical tabs-right tabs-navigation tabs-navigation-simple">
+						<ul class="nav nav-tabs col-sm-3">
+						{% for d in website_specifications %}
+							<li class="nav-item {{ 'active' if loop.index==1 else '' }}">
+								<a class="nav-link" href="#tabsNavigations-{{ loop.index }}" data-toggle="tab"><i class="fas fa-bullseye"></i> {{ _(d.label) }}</a>
+							</li>
+						{% endfor %}
+						</ul>
+					</div>
+				</div>
+				<div class="col-lg-8">
+				{% for d in website_specifications %}
+					<div class="tab-pane tab-pane-navigation {{ 'active' if loop.index==1 else '' }}" id="tabsNavigations-{{ loop.index }}">
+						<div >
+							<h4 class="text-primary font-weight-semibold mb-1 text-4">{{ _(d.label) }}:</h4>
+							<div class="feature-box feature-box-style-2 mb-4">
+								<div class="feature-box-icon w-auto d-none d-sm-block"><br></div>
+								<div class="feature-box-info pl-0 pl-sm-3">
+									{% if website_languages_request == "ar" %}{{ d.arabic_description or d.description }}{% else %}{{ d.description }}{% endif %}
+								</div>
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
+	{% endif %}
+
+{% if sidebarshow_item_group %}
+</div>
+</div>
+{% endif %}
+
+
+
+
+
+
+
+
+
+<script>
+	{% include "templates/includes/product_page.js" %}
+
+	{% if variant_info %}
+	window.variant_info = {{ variant_info }};
+	{% else %}
+	window.variant_info = null;
+	{% endif %}
+</script>
+{% endblock %}

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<!-- Built on Frappe. https://frappe.io/ -->
+<html lang='{{ website_languages_request or "en" }}'{% if website_languages_request == "ar"%} dir="rtl"{%- endif %}>
+<head>
+	<meta charset="utf-8">
+	<!-- Mobile Metas -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no">
+	<title>{% block title %} {{ title | striptags }} {% endblock %}</title>
+	<meta name="generator" content="frappe">
+    {% block favicon %}
+	<!-- Favicon -->
+	<link rel="shortcut icon"
+		href="{{ (favicon or "/assets/frappe/images/favicon.png") | abs_url }}"
+		type="image/x-icon">
+	<link rel="icon"
+		href="{{ (favicon or "/assets/frappe/images/favicon.png") | abs_url }}"
+		type="image/x-icon">
+    {% endblock %}
+	{%- block head -%}
+		{% block meta_block %}{% endblock %}
+		{% if head_html is defined -%}
+		{{ head_html or "" }}
+		{%- endif %}
+		{%- block head_include %}{{ head_include or "" }}{% endblock -%}
+		{%- block style %}{%- endblock -%}
+	{%- endblock -%}
+	
+	
+		<link type="text/css" rel="stylesheet" href="/assets/css/frappe-web.css">
+		<link type="text/css" rel="stylesheet" href="/assets/css/erpnext-web.css">
+	
+	<!-- Web Fonts  -->
+	{% if website_languages_request == "ar"%}
+	<link href="https://fonts.googleapis.com/css?family=Cairo:400,600,700,900&subset=arabic" rel="stylesheet">
+	{%- else -%}
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800%7CShadows+Into+Light" rel="stylesheet" type="text/css">
+	{%- endif %}
+
+
+		<!-- Vendor CSS -->
+		<link rel="stylesheet" href="/assets/wiser_care_theme/vendor/bootstrap/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/assets/wiser_care_theme/vendor/fontawesome-free/css/all.min.css">
+		<link rel="stylesheet" href="/assets/wiser_care_theme/vendor/animate/animate.min.css">
+		<link rel="stylesheet" href="/assets/wiser_care_theme/vendor/simple-line-icons/css/simple-line-icons.min.css">
+		<link rel="stylesheet" href="/assets/wiser_care_theme/vendor/owl.carousel/assets/owl.carousel.min.css">
+		<link rel="stylesheet" href="/assets/wiser_care_theme/vendor/owl.carousel/assets/owl.theme.default.min.css">
+		<link rel="stylesheet" href="/assets/wiser_care_theme/vendor/magnific-popup/magnific-popup.min.css">
+		
+	<!-- Theme CSS -->
+		<link rel="stylesheet" href="/assets/wiser_care_theme/css/{% if website_languages_request == "ar" -%}rtl-{%- endif %}theme.css">
+		<link rel="stylesheet" href="/assets/wiser_care_theme/css/{% if website_languages_request == "ar" -%}rtl-{%- endif %}theme-elements.css">
+		<link rel="stylesheet" href="/assets/wiser_care_theme/css/{% if website_languages_request == "ar" -%}rtl-{%- endif %}theme-blog.css">
+		<link rel="stylesheet" href="/assets/wiser_care_theme/css/{% if website_languages_request == "ar" -%}rtl-{%- endif %}theme-shop.css">
+
+	<!-- Current Page CSS -->
+		<link rel="stylesheet" href="/assets/wiser_care_theme/vendor/rs-plugin/css/settings.css">
+		<link rel="stylesheet" href="/assets/wiser_care_theme/vendor/rs-plugin/css/layers.css">
+		<link rel="stylesheet" href="/assets/wiser_care_theme/vendor/rs-plugin/css/navigation.css">
+		
+	<!-- Demo CSS -->
+		<link rel="stylesheet" href="/assets/wiser_care_theme/css/demos/{% if website_languages_request == "ar" -%}rtl-{%- endif %}demo-medical.css">
+
+	<!-- Skin CSS -->
+		<link rel="stylesheet" href="/assets/wiser_care_theme/css/skins/skin-medical.css"> 
+
+	<!-- Theme Custom CSS -->
+		<link rel="stylesheet" href="/assets/wiser_care_theme/css/custom.css">
+
+	<!-- Head Libs -->
+		<script src="/assets/wiser_care_theme/vendor/modernizr/modernizr.min.js"></script>
+    <script>
+		window.frappe = {};
+		frappe.ready_events = [];
+		frappe.ready = function(fn) {
+			frappe.ready_events.push(fn);
+		}
+		window.dev_server = {{ dev_server }};
+		window.socketio_port = {{ frappe.socketio_port }};
+    </script>
+</head>
+{% block body %}
+<body data-path="{{ path }}">
+			<header id="header" class="header-effect-shrink" data-plugin-options="{'stickyEnabled': true, 'stickyEffect': 'shrink', 'stickyEnableOnBoxed': true, 'stickyEnableOnMobile': true, 'stickyChangeLogo': true, 'stickyStartAt': 120, 'stickyHeaderContainerHeight': 70}">		
+				<div class="header-body border-top-0">
+					{%- block banner -%}
+						{% include "templates/includes/banner_extension.html" ignore missing %}
+							{% if banner_lang_html -%}
+								<div class="header-top header-top-default header-top-borders border-bottom-0">
+									<div class="container h-100">
+										<div class="header-row h-100">
+											<div class="header-column justify-content-end">
+												<div class="header-row">
+													<nav class="header-nav-top">
+														<ul class="nav nav-pills">
+															{{ _(banner_lang_html or "") }}
+															{% if enable_multilanguage_support and display_language_picker_in_top_bar -%}
+																{% include "templates/includes/navbar/weblanguage.html" %}
+															{%- endif %}
+														</ul>
+													</nav>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							{%- endif %}
+					{%- endblock -%}
+					{%- block navbar -%}
+						{% include "templates/includes/navbar/navbar.html" %}
+					{%- endblock -%}
+				</div>
+			</header>
+			<div role="main" class="main">
+				<div class="hero-and-content">
+					<div data-html-block="hero">
+					{%- block hero -%}{%- endblock -%}
+					</div>
+				</div>
+				{% block content %}{% endblock %}
+				{% block topfooter %}{% endblock %}
+				{%- block footer -%}{% include "templates/includes/footer/footer.html" %}{%- endblock -%}
+		
+			</div>
+	{% block base_scripts %}
+	<!-- Vendor -->
+		<script src="/assets/wiser_care_theme/vendor/jquery/jquery.min.js"></script>
+		<script src="/assets/wiser_care_theme/vendor/jquery.appear/jquery.appear.min.js"></script>
+		<script src="/assets/wiser_care_theme/vendor/jquery.easing/jquery.easing.min.js"></script>
+		<script src="/assets/wiser_care_theme/vendor/jquery.cookie/jquery.cookie.min.js"></script>
+		<script src="/assets/wiser_care_theme/vendor/popper/umd/popper.min.js"></script>
+		<script src="/assets/wiser_care_theme/vendor/bootstrap/js/bootstrap.min.js"></script>
+		<script src="/assets/wiser_care_theme/vendor/common/common.min.js"></script>
+		<script src="/assets/wiser_care_theme/vendor/jquery.validation/jquery.validate.min.js"></script>
+		<script src="/assets/wiser_care_theme/vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js"></script>
+		<script src="/assets/wiser_care_theme/vendor/jquery.gmap/jquery.gmap.min.js"></script>
+		<script src="/assets/wiser_care_theme/vendor/jquery.lazyload/jquery.lazyload.min.js"></script>
+		<script src="/assets/wiser_care_theme/vendor/isotope/jquery.isotope.min.js"></script>
+		<script src="/assets/wiser_care_theme/vendor/owl.carousel/owl.carousel.min.js"></script>
+		<script src="/assets/wiser_care_theme/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+		<script src="/assets/wiser_care_theme/vendor/vide/jquery.vide.min.js"></script>
+		<script src="/assets/wiser_care_theme/vendor/vivus/vivus.min.js"></script>
+		
+		<!-- Theme Base, Components and Settings -->
+		<script src="/assets/wiser_care_theme/js/theme.js"></script>
+		
+		<!-- Current Page Vendor and Views -->
+		<script src="/assets/wiser_care_theme/vendor/rs-plugin/js/jquery.themepunch.tools.min.js"></script>
+		<script src="/assets/wiser_care_theme/vendor/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+
+		<!-- Current Page Vendor and Views 
+		<script src="/assets/wiser_care_theme/js/views/view.contact.js"></script>-->
+
+		<!-- Demo -->
+		<script src="/assets/wiser_care_theme/js/demos/demo-medical.js"></script>
+		
+		<!-- Theme Custom -->
+		<script src="/assets/wiser_care_theme/js/custom.js"></script>
+		
+		<!-- Theme Initialization Files -->
+		<script src="/assets/wiser_care_theme/js/theme.init.js"></script>
+
+	<!-- js should be loaded in body! -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.slim.js"></script>
+	<script type="text/javascript" src="/assets/js/frappe-web.min.js"></script>
+	{% endblock %}
+    {%- if js_globals is defined %}
+    <script>
+    {%- for key, value in js_globals.iteritems() %}
+    window.{{ key }} = "{{ value[0] }}";
+    {%- endfor -%}
+    </script>
+    {% endif -%}
+	{%- for link in web_include_js %}
+	<script type="text/javascript" src="{{ link|abs_url }}"></script>
+	{%- endfor -%}
+    {%- block script %}{%- endblock %}
+	<!-- csrf_token -->
+    {%- block body_include %}{{ body_include or "" }}{% endblock -%}
+</body>
+{% endblock %}
+</html>

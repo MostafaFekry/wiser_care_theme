@@ -1,0 +1,13 @@
+{% if website_languages_items -%}
+<li class="nav-item dropdown nav-item-borders py-2">
+	<a class="nav-link" href="#" role="button" id="dropdownLanguage" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		<i class="fas fa-globe text-4 text-color-primary"></i> {{ _("Language") }}
+		<i class="fas fa-angle-down"></i>
+	</a>
+	<div class="dropdown-menu" aria-labelledby="dropdownLanguage">
+		{%- for page in website_languages_items -%}
+			<a class="dropdown-item" href="/{{ page.language }}/{{ path }}"><img src="/assets/wiser_care_theme/img/blank.gif" class="flag flag-{{ page.language_flag }}" alt="{{ page.language_name }}" /> {{ page.language_name }}</a>
+		{%- endfor %}
+	</div>
+</li>
+{%- endif %}

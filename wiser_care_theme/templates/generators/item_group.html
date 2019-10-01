@@ -1,0 +1,58 @@
+{% extends "templates/web.html" %}
+
+{% block header %}<h1>{{ _(name) }}</h1>{% endblock %}
+{% if slideshow %}
+{% block slideshow %}<!-- slideshow -->
+{% include "templates/includes/slideshow.html" %}
+{% endblock %}
+{% endif %}
+
+{% if sidebarshow_item_group %}
+{% block sidebar %}
+{% endblock %}
+{% endif %}
+
+{% block page_content %}
+{% if sidebarshow_item_group %}
+<div class="row">
+{% include "templates/includes/sidebarshow_item_group.html" %}
+<div class="col-lg-9">
+{% endif %}
+<div class="mt-0" itemscope itemtype="http://schema.org/Product">
+<h2 class="font-weight-semibold mb-3">{{ _(name) }}</h2>
+{% if description %}<!-- description -->
+<p class="lead font-weight-normal" itemprop="description">{{ _(description or "")}}</p>
+<hr class="solid my-4">
+{% endif %}
+
+
+{% if items %}
+<div class="container py-2">
+	<ul class="nav nav-pills sort-source sort-source-style-3 " data-sort-id="portfolio" data-option-key="filter" data-plugin-options="{'layoutMode': 'fitRows', 'filter': '*'}">
+		{% if medication_type %}<li class="nav-item active" data-option-value="*"><a class="nav-link text-2 text-uppercase active" href="#">{% if medication_type %}{{ _("Show All") }}{% endif %}</a></li>
+		
+		{% for medication_type in medication_type %}
+		<li class="nav-item" data-option-value='.{{ medication_type.name|replace(" ", "_") }}'><a class="nav-link text-uppercase" href="#">{% if medication_type.image %}<img src="{{ medication_type.image }}" width="30" style="vertical-align:middle"> {% endif %}{{ _(medication_type.medication_type) }}</a></li>
+		{% endfor %}
+		{% endif %}
+	</ul>
+	<div class="sort-destination-loader sort-destination-loader-showing mt-4 pt-2">
+		<div class="row portfolio-list sort-destination" id="search-list" data-sort-id="portfolio">
+			{% for i in range(0, page_length) %}
+				{% if items[i] %}
+					{{ items[i] }}
+				{% endif %}
+			{% endfor %}			
+		</div>
+	</div>
+</div>
+{% else %}
+	<div class="text-muted">{{ _("No items listed") }}.</div>
+{% endif %}
+
+</div>
+{% if sidebarshow_item_group %}
+</div>
+</div>
+{% endif %}
+{% endblock %}

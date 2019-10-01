@@ -1,0 +1,118 @@
+{% extends "templates/web.html" %}
+
+{% block title %}{{ heading or "Contact Us"}} {{ introduction or "" }}{% endblock %}
+{% block header %} <h1>{{ heading or "Contact Us"}}</h1> {% endblock %}
+{% block page_content %}
+<div class="row mt-0">
+	{% if address_line1 %}
+	<div class="col-lg-4">
+		<div class="feature-box feature-box-style-2">
+			<div class="feature-box-icon pt-0">
+				<i class="icon-location-pin icons"></i>
+			</div>
+			<div class="feature-box-info">
+				<h4 class="mb-2">{{ _(address_title or "Address") }}</h4>
+				<p class="text-3">
+						{{ _(address_line1) }}{% if city %}, {{ _(city) }}{% endif %}{% if state %}, {{ _(state) }}{% endif %}{% if pincode %}, {{ _(pincode) }}{% endif %}{% if country %}, {{ _(country) }}{% endif %}
+				</p>
+			</div>
+		</div>
+	</div>
+	{% endif %}
+	{% if phone %}
+	<div class="col-lg-4">
+		<div class="feature-box feature-box-style-2">
+			<div class="feature-box-icon pt-0">
+				<i class="icon-phone icons"></i>
+			</div>
+			<div class="feature-box-info">
+				<h4 class="mb-2">{{ _("Phone") }}</h4>
+				<p class="text-4" itemprop="telephone">
+					{{ phone }}
+				</p>
+			</div>
+		</div>
+	</div>
+	{% endif %}
+	{% if email_id %}
+	<div class="col-lg-4">
+		<div class="feature-box feature-box-style-2">
+			<div class="feature-box-icon pt-0">
+				<i class="icon-envelope icons"></i>
+			</div>
+			<div class="feature-box-info">
+				<h4 class="mb-2">{{ _("Email") }}</h4>
+				<p class="text-4">
+					<a href="mailto:{{ email_id }}" class="text-decoration-none" itemprop="email">{{ email_id }}</a><br>
+				</p>
+			</div>
+		</div>
+	</div>
+	{% endif %}
+</div>
+				
+
+<hr class="solid">
+
+				<div class="row pt-4 mb-4">
+					<div class="col-lg-6">
+						<div id="googlemaps" class="google-map m-0 mb-5">
+						<!-- Google Maps - Go to the bottom of the page to change settings and map location. style="margin-bottom:0px !important;" style="margin-top:0px !important;"
+						<div id="" class="google-map mt-xlg mb-none"></div>-->{{ google_maps or "" }}
+						</div>
+
+					</div>
+					<div class="col-lg-6">
+
+						<h4 class="font-weight-semibold mb-4">{{ _("Send a Message to Us") }}</h4>
+
+						<form id="contactForm" class="contact-form"  method="POST">
+							<div class="contact-form-success alert alert-success d-none mt-4" id="contactSuccess">
+								{{ _("<strong>Success!</strong> Your message has been sent to us.") }}
+							</div>
+							
+							<div class="contact-form-error alert alert-danger d-none mt-4" id="contact-alert">
+								{{ _("<strong>Error!</strong> There was an error sending your message.") }}
+								<span class="mail-error-message text-1 d-block" id="mailErrorMessage"></span>
+							</div>
+							<div class="form-row">
+								<div class="form-group col">
+									<input type="text" placeholder="{{ _('Your Name') }}" value="" data-msg-required="{{ _('Please enter your name.') }}" maxlength="100" class="form-control" name="name" id="name" required>
+								</div>
+							</div>
+							<div class="form-row">
+								<div class="form-group col">
+									<input type="email" placeholder="{{ _('Your E-mail') }}" value="" data-msg-required="{{ _('Please enter your email address.') }}" data-msg-email="{{ _('Please enter a valid email address.') }}" maxlength="100" class="form-control" name="email" id="email" required>
+								</div>
+							</div>
+							<div class="form-row">
+								<div class="form-group col">
+									<select id="subject" name="subject" class="form-control">
+									{% if query_options -%}
+										{% for option in query_options.split("\n") -%}
+										<option value="{{ option }}">{{ _(option) }}</option>
+										{%- endfor %}
+									{% else %}
+										<option value="General">{{ _("General") }}</option>
+									{% endif %}
+									</select>
+								</div>
+							</div>
+							<div class="form-row">
+								<div class="form-group col">
+									<textarea maxlength="5000" placeholder="{{ _('Message') }}" data-msg-required="{{ _('Please enter your message.') }}" rows="5" class="form-control" name="message" id="message" required></textarea>
+								</div>
+							</div>
+							<div class="form-row">
+								<div class="form-group col">
+								<input type="submit" value="{{ _('Send Message') }}" class="btn btn-primary btn-lg mb-5 btn-send" data-loading-text="Loading...">
+								</div>
+							</div>
+						</form>
+
+					</div>
+				</div>
+<script>
+	{% include "templates/includes/contactupdate.js" %}
+</script>
+{% endblock %}

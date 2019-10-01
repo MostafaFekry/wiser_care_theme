@@ -1,0 +1,29 @@
+{% extends "templates/web.html" %}
+
+{% block header %}<h1>{{ _(title) }}</h1>{% endblock %}
+
+{% if slideshow %}
+{% block slideshow %}<!-- slideshow -->
+{% include "templates/includes/slideshow.html" %}
+{% endblock %}
+{% endif %}
+
+{% block page_content %}
+{{ _(main_section) }}
+{% if agents_item_details %}
+<div class="content-grid mt-5 pb-5">
+	{% for agents_info in agents_item_details %}
+	{% if loop.index==1 %}<div class="row content-grid-row pl-3 pr-3">{% endif %}
+		<div class="content-grid-item col-sm-4 text-center">
+		{% if agents_info.route -%}<a href="{{ agents_info.route }}">{% endif %}
+			<img src="{{ agents_info.image }}" alt class="img-fluid" />
+		{% if agents_info.route -%}</a>{% endif %}
+		</div>
+	{% if loop.index%3 ==0 %}</div>{% endif %}
+	{% if loop.index%3 ==0 %}<div class="row content-grid-row pl-3 pr-3">{% endif %}
+	{% endfor %}
+	</div>
+</div>
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,166 @@
+{% extends "templates/base.html" %}
+{% block title %}Wiser Care | Always there to care{% endblock %}
+
+{% block head_include %}
+	<meta name="keywords" content="Wiser Care" />
+		<meta name="description" content="Always there to care">
+{% endblock %}
+
+{% block content %}
+{% include "templates/includes/home_slideshow.html" %}
+
+			<section class="section-custom-medical">
+				<div class="container">
+					<div class="row medical-schedules">
+						<div class="col-xl-3 box-one  appear-animation" data-appear-animation="fadeInLeft" data-appear-animation-delay="0">
+							<div class="feature-box feature-box-style-2 align-items-center p-4">
+								<div class="feature-box-icon p-0">
+									{% if homepage.logo_icon %}<img src="{{ homepage.logo_icon }}" alt class="img-fluid pt-1" />{% endif %}
+								</div>
+								<div class="feature-box-info">
+									<h4 class="m-0 p-0">{{ _(homepage.first_tab_title) }}</h4>
+								</div>
+							</div>
+						</div>
+						<div class="col-xl-3 box-two bg-color-tertiary appear-animation" data-appear-animation="fadeInLeft" data-appear-animation-delay="600">
+							<h5 class="m-0">
+								<a href="{{ homepage.second_tab_link|abs_url }}" title="" target="{{ homepage.second_tab_link_target }}">
+									{{ _(homepage.second_tab_title) }}
+									<i class="icon-arrow-right-circle icons"></i>
+								</a>
+							</h5>
+						</div>
+						<div class="col-xl-3 box-three bg-color-primary appear-animation" data-appear-animation="fadeInLeft" data-appear-animation-delay="1200">
+							<div class="expanded-info p-4 bg-color-primary">
+								{{ _(homepage.third_tab_description) }}
+							</div>
+							<h5 class="m-0">
+								{{ _(homepage.third_tab_title) }}
+								<i class="icon-arrow-right-circle icons"></i>
+							</h5>
+						</div>
+						<div class="col-xl-3 box-four bg-color-secondary p-0 appear-animation" data-appear-animation="fadeInLeft" data-appear-animation-delay="1800">
+							<a href="tel:+20225165850" class="text-decoration-none">
+								<div class="feature-box feature-box-style-2 m-0">
+									<div class="feature-box-icon">
+										<i class="icon-call-out icons"></i>
+									</div>
+									<div class="feature-box-info">
+										<label class="font-weight-light">{{ _(homepage.fourth_tab_title) }}</label>
+										<strong class="font-weight-normal">{{ _(homepage.fourth_tab_description) }}</strong>
+									</div>
+								</div>
+							</a>
+						</div>
+					</div>
+					<div class="row mt-5 mb-5 pt-3 pb-3"><div class="col-md-8">
+							<h2 class="font-weight-semibold mb-0">{{ _(homepage.content_title) }}</h2>
+							<p class="lead font-weight-normal">{{ _(homepage.description) }}</p>
+
+							<a href= "{{ homepage.link_route|abs_url }}" class="btn btn-outline btn-quaternary custom-button text-uppercase mt-4 mb-4 mb-md-0 font-weight-bold">{{ _(homepage.link_title) }}</a>
+						</div>
+						<div class="col-md-4">
+							{% if homepage.content_image %}<img src="{{ homepage.content_image }}" alt class="img-fluid box-shadow-custom" />{% endif %}
+						</div></div>
+				</div>
+			</section>
+			{% if homepage.allow_display_products_groups and homepage.products_groups %}
+			<section class="section section-no-border">
+				<div class="container">
+					<div class="row pt-3">
+						<div class="col">
+							<h2 class="font-weight-semibold mb-0">{{ _(homepage.products_group_section_title) }}</h2>
+							<p class="lead font-weight-normal">{{ _(homepage.products_group_description or "") }}</p>
+						</div>
+					</div>
+					{% for itemgroup in homepage.products_groups %}
+					{% if loop.index==1 %}<div class="row mt-4">{% endif %}
+						<div class="col-lg-4">
+							<div class="feature-box feature-box-style-2 appear-animation" data-appear-animation="fadeInUp" data-appear-animation-delay="300">
+								<div class="feature-box-icon" style="min-width: 4.7rem;">
+									<img src="{{ itemgroup.image }}" alt class="img-fluid" />
+								</div>
+								<div class="feature-box-info">
+									<h4 class="font-weight-semibold"><a href="{{ (itemgroup.route or '')|abs_url }}" class="text-decoration-none">{{ _(itemgroup.item_group_name) }}</a></h4>
+									<p>{{ _(itemgroup.description or "") }}</p>
+								</div>	
+							</div>
+						</div>
+					{% if loop.index%3 ==0 %}</div>{% endif %}
+					{% if loop.index%3 ==0 %}<div class="row mt-4">{% endif %}
+					{% endfor %}
+					</div>
+					<div class="row mt-2 pb-4">
+						<div class="col-lg-12 text-center">
+							<a class="btn btn-outline btn-quaternary custom-button text-uppercase mt-4 font-weight-bold" href="{{ (homepage.products_url or '')|abs_url }}">view more</a>
+						</div>
+					</div>
+				</div>
+			</section>
+			{% endif %}
+			{% if homepage.allow_display_agents_section and homepage.agents %}
+			<section>
+				<div class="container">
+					<div class="row pt-4">
+						<div class="col">
+							<h2 class="font-weight-semibold mb-0">{{ _(homepage.agents_section_title) }}</h2>
+							<p class="lead font-weight-normal">{{ _(homepage.agents_description) or "" }}</p>
+						</div>
+					</div>
+					<div class="row mb-5 pb-4">
+						<div class="col-lg-12 text-center appear-animation" data-appear-animation="fadeInUpShorter">
+							<div class="owl-carousel owl-theme stage-margin " data-plugin-options="{'items': 6,'autoplay': true, 'autoplayTimeout': 3000, 'margin': 10, 'loop': true, 'nav': true, 'dots': false, 'stagePadding': 40}">
+								{% for item_agents in homepage.agents %}
+								<div>
+								<a href="{{ (item_agents.route or '')|abs_url }}" class="text-decoration-none"><img src="{{ item_agents.image }}" alt class="img-fluid" /></a>
+								</div>
+								{% endfor %}
+							</div>
+						</div>
+						<!--<div class="col">
+							<div class="content-grid">
+								<div class="row content-grid-row pl-3 pr-3">
+									{% for item_agents in homepage.agents %}
+									<div class="content-grid-item col-md-4 col-lg-2 text-center">
+										<a href="{{ (item_agents.route or '')|abs_url }}" class="text-decoration-none"><img src="{{ item_agents.image }}" alt class="img-fluid" /></a>
+									</div>
+									{% endfor %}
+								</div>
+							</div>
+						</div>-->
+					</div>
+				</div>
+			</section>
+			{% endif %}
+			{% if homepage.seo_messages_details %}
+			<section class="section-primary">
+				<div class="container">
+					<div class="row pt-5 pb-5">
+						<div class="owl-carousel owl-theme nav-style-1 stage-margin" data-plugin-options="{'responsive': {'576': {'items': 1}, '768': {'items': 1}, '992': {'items': 1}, '1200': {'items': 1}}, 'loop': true, 'nav': false, 'dots': false, 'stagePadding': 40, 'autoplay': true, 'autoplayTimeout': 6000, 'loop': true}">
+							{% for item_seo_messages in homepage.seo_messages_details %}
+							<div class="row justify-content-center">
+								<div class="col-lg-8 pt-4 mt-3">
+									<div class="testimonial testimonial-style-2 testimonial-with-quotes mb-0">
+										{% if item_seo_messages.image %}<div class="testimonial-author">
+											<img src="{{ item_seo_messages.image }}" class="img-fluid rounded-circle mb-0" alt="">
+										</div>
+										{% else %}<div class="testimonial-quote">“</div>
+										{% endif %}
+										<blockquote>
+											<p class="font-weight-light">{{ _(item_seo_messages.description) }}</p>
+										</blockquote>
+										<div class="testimonial-author">
+											<p class="text-uppercase">
+												<strong>{{ _(item_seo_messages.title) }}</strong><span class="text-secondary">{{ _(item_seo_messages.position or "") }}</span>
+											</p>
+										</div>
+									</div>
+								</div>
+							</div>
+							{% endfor %}
+						</div>
+					</div>
+				</div>
+			</section>
+			{% endif %}
+{% endblock %}

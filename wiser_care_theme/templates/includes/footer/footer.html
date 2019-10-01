@@ -1,0 +1,90 @@
+<footer id="footer" class="m-0">
+				<div class="container">
+					<div class="row pt-5 pb-4">
+						<div class="col-md-4 col-lg-4 mb-4 mb-lg-0">
+							{% block extension %}
+								{% include "templates/includes/footer/footer_extension.html" %}
+							{% endblock %}
+						</div>
+						<div class="col-md-4 col-lg-4 mb-4 mb-lg-0">
+							<h4 class="mb-4">{{ _(location_tab_title) }}</h4>
+							<p>{{ _(location_details) }}</p>
+							<div class="contact-details">
+								<h4 class="mb-4">{{ _(call_tab_title) }}</h4>
+								<a class="text-decoration-none " href="tel:{{ _(call_details) }}">
+									<strong class="">{{ _(call_details) }}</strong>
+								</a>
+							</div>
+														
+						</div>
+						<div class="col-md-4 col-lg-4 mb-4 mb-lg-0">
+							
+							<div class="contact-details">
+							<h4 class="mb-4">{{ _(opening_tab_title) }}</h4>
+							{{ _(opening_details) }}
+								<h4 class="mb-4">{{ _(social_tab_title) }}</h4>
+								<ul class="social-icons">
+								{% if facebook_link %}
+									<li class="social-icons-facebook">
+										<a href="{{ facebook_link|abs_url }}" target="_blank" title="Facebook">
+											<i class="fab fa-facebook-f m-0"></i>
+										</a>
+									</li>
+								{% endif %}
+								{% if twitter_link %}
+									<li class="social-icons-twitter">
+										<a href="{{ twitter_link|abs_url }}" target="_blank" title="Twitter">
+											<i class="fab fa-twitter m-0"></i>
+										</a>
+									</li>
+								{% endif %}
+								{% if linked_in_link %}
+									<li class="social-icons-linkedin">
+										<a href="{{ linked_in_link|abs_url }}" target="_blank" title="Linkedin">
+											<i class="fab fa-linkedin-in m-0"></i>
+										</a>
+									</li>
+								{% endif %}
+								{% if instagram_link %}
+									<li class="social-icons-linkedin">
+										<a href="{{ instagram_link|abs_url }}" target="_blank" title="Linkedin">
+											<i class="fab fa-instagram m-0"></i>
+										</a>
+									</li>
+								{% endif %}
+								{% if google_link %}
+									<li class="social-icons-linkedin">
+										<a href="{{ google_link|abs_url }}" target="_blank" title="Linkedin">
+											<i class="fab fa-linkedin-in m-0"></i>
+										</a>
+									</li>
+								{% endif %}
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="footer-copyright pt-3 pb-3">
+					<div class="container">
+						<div class="row">
+							<div class="col-lg-8 d-flex align-items-center justify-content-center justify-content-lg-start mb-2 mb-lg-0">
+								{% if favicon %}
+								<a href="{{ url_prefix }}{{ home_page or "/"}}" class="logo pr-0 pr-lg-3 pl-lg-3">
+									<img src="{{ (favicon or "/assets/frappe/images/favicon.png") | abs_url }}" style="width: 26px;" >
+								</a>
+								{% endif %}
+								<p>
+								{% if copyright %}
+									&copy; {{ _(website_languages_copyright) }}
+								{% endif %}
+								</p>
+							</div>
+							{%if footer_items %}
+							<div class="col-lg-4 d-flex align-items-center justify-content-center justify-content-lg-end">
+								{% include "templates/includes/footer/footer_items.html" %}
+							</div>
+							{% endif %}
+						</div>
+					</div>
+				</div>
+			</footer>

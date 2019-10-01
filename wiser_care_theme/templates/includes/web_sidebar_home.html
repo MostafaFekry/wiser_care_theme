@@ -1,0 +1,20 @@
+{% if slideshow %}
+{% if slides %}
+<div class="slider-container rev_slider_wrapper" style="height: 650px;">
+	<div id="revolutionSlider" class="slider rev_slider" data-version="5.4.8" data-plugin-revolution-slider data-plugin-options="{'delay': 9000, 'gridwidth': 1170, 'gridheight': 650, 'disableProgressBar': 'on', 'navigation': {'bullets': {'enable': true, 'direction': 'vertical', 'h_align': 'right', 'v_align': 'center', 'space': 5}, 'arrows': {'enable': false}}}">
+		<ul>
+		{% for slide in slides %}
+			<li data-transition="fade">
+				<img src="{{ slide.image }}"  
+					alt=""
+					data-bgposition="center center" 
+					data-bgfit="cover" 
+					data-bgrepeat="no-repeat"
+					class="rev-slidebg">
+			</li>
+		{% endfor %}
+		</ul>
+	</div>
+</div>
+{% endif %}
+{% endif %}

@@ -1,0 +1,60 @@
+{% extends "templates/web.html" %}
+
+
+{% block hero %}{{ hero or "" }}{% endblock %}
+
+
+{% block header %} <h1>{{ _(title) }}</h1> {% endblock %}
+
+
+{% if slideshow %}
+{% block slideshow %}<!-- slideshow -->
+{% include "templates/includes/slideshow.html" %}
+{% endblock %}
+{% endif %}
+
+{% block page_content %}
+<div class="row pb-4 mb-3">
+{% if exhibition_images_items %}
+	<div class="col-lg-8 mb-4 mb-lg-0">
+		<div class="lightbox mt-3" data-plugin-options="{'delegate': 'a.lightbox-portfolio', 'type': 'image', 'gallery': {'enabled': true}}">
+			<div class="masonry-loader masonry-loader-showing">
+				<div class="masonry" data-plugin-masonry data-plugin-options="{'itemSelector': '.masonry-item'}">
+					{% for exhibition_images_items in exhibition_images_items %}
+					<div class="masonry-item">
+						<span class="thumb-info thumb-info-centered-icons thumb-info-no-borders">
+							<span class="thumb-info-wrapper">
+								<img src="{{ exhibition_images_items.image }}" class="img-fluid border-radius-0" alt="">
+								<span class="thumb-info-action">
+									<a href="{{ exhibition_images_items.image }}" class="lightbox-portfolio">
+										<span class="thumb-info-action-icon thumb-info-action-icon-light"><i class="fas fa-search-plus"></i></span>
+									</a>
+								</span>
+							</span>
+						</a>
+					</div>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+	</div>
+{% endif %}
+	<div class="col-lg-4">
+		<div class="overflow-hidden">
+			<h2 class="text-color-dark font-weight-normal text-4 mb-0 pt-1 appear-animation" data-appear-animation="maskUp" data-appear-animation-delay="300"><strong class="font-weight-extra-bold">{{ _(title) }}</strong></h2>
+		</div>
+		{% if content %}<p class="appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="500">{{ _(content) }}</p>{% endif %}
+
+		<div class="overflow-hidden">
+			<h2 class="text-color-dark font-weight-normal text-4 mb-0 mt-4 appear-animation" data-appear-animation="maskUp" data-appear-animation-delay="700">{{ _("Exhibitor Details") }}</h2>
+		</div>
+		<ul class="list list-icons list-primary list-borders text-2 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="900">
+			<li><i class="fas fa-caret-right left-10"></i> <strong class="text-color-primary">{{ _("From:") }} </strong> {{ frappe.format_date(exhibition_starts_on) or exhibition_starts_on }}</li>
+			{% if exhibition_ends_on %}<li><i class="fas fa-caret-right left-10"></i> <strong class="text-color-primary">{{ _("To:") }} </strong> {{ frappe.format_date(exhibition_ends_on) or exhibition_ends_on }}</li>{% endif %}
+			{% if exhibition_location %}<li><i class="fas fa-caret-right left-10"></i> <strong class="text-color-primary">{{ _("Location:") }} </strong> {{  _(exhibition_location) }}</li>{% endif %}
+		</ul>
+	</div>
+</div>
+
+
+{% endblock %}

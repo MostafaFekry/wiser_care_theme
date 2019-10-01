@@ -1,0 +1,21 @@
+{% from "erpnext/templates/includes/macros.html" import product_image_square %}
+<div class="appear-animation" data-appear-animation="fadeInUp" data-appear-animation-delay="100">
+	<div class="feature-box feature-box-style-2">
+		<div class="feature-box-icon" style="min-width: 4.7rem;">
+			{{ product_image_square(thumbnail or website_image or image) }}
+		</div>
+		<div class="feature-box-info">
+			<h4 class="font-weight-semibold mb-1">{{ _(item_name or name) }}</h4>
+			{% set website_description = website_description or description %}
+			{% if website_description != item_name %}
+				<p class="mb-0">{{ website_description or description }}</p>
+			{% elif item_code and item_code != item_name %}
+				<p class="mb-0">{{ _('Item Code') }}: {{ item_code }}</p>
+			{% endif %}
+			<p class="mb-0"><a href="{{ route|abs_url }}" class="btn btn-outline btn-quaternary custom-button text-uppercase mt-3 font-weight-bold btn-md text-1">view more...</a></p>
+		</div>
+	</div>
+
+	<hr class="solid my-5">
+</div>
+

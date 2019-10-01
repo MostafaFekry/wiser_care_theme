@@ -1,0 +1,32 @@
+{% extends "templates/web.html" %}
+
+{% block header %}<h1>{{ _(title) }}</h1>{% endblock %}
+
+{% if slideshow %}
+{% block slideshow %}<!-- slideshow -->
+{% include "templates/includes/slideshow.html" %}
+{% endblock %}
+{% endif %}
+
+{% block page_content %}
+{{ _(main_section or "") }}
+{% if species_item_details %}
+	{% for item_details in species_item_details %}
+	<div class="col-lg-4">
+		<a href="{{ item_details.route }}">
+			<span class="thumb-info thumb-info-no-borders thumb-info-no-borders-rounded">
+				<span class="thumb-info-wrapper">
+					<img src="{{ item_details.image }}" class="img-fluid" alt="">
+					<span class="thumb-info-title">
+						<span class="thumb-info-inner">{{ _(item_details.species_name) }}</span>
+					</span>
+					<span class="thumb-info-action">
+						<span class="thumb-info-action-icon"><i class="fas fa-plus"></i></span>
+					</span>
+				</span>
+			</span>
+		</a>
+	</div>
+	{% endfor %}
+{% endif %}
+{% endblock %}

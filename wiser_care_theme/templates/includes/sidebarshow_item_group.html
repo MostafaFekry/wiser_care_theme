@@ -1,0 +1,15 @@
+<div class="col-lg-3">
+	<aside class="sidebar" id="sidebar" data-plugin-sticky data-plugin-options="{'minWidth': 991, 'containerSelector': '.container', 'padding': {'top': 110}}">
+		{% include "templates/includes/products_search_form.html" %}
+		{% if sidebarshow_item_group %}
+		<h5 class="font-weight-bold pt-3">{{ _("Medicinal Effect") }}</h5>
+		<ul class="nav nav-list flex-column">
+			{%- for sidebarshow_item_group in sidebarshow_item_group -%}
+				{% if not sidebarshow_item_group.route == "products" %}
+					<li class="nav-item"><a class="nav-link {% if (sidebarshow_item_group.route or '')|abs_url == '/'+path %} active{% endif %} {% if item_group == sidebarshow_item_group.item_group_name %} active{% endif %}" href="{{ (sidebarshow_item_group.route or '')|abs_url }}">{{ _(sidebarshow_item_group.item_group_name) }}{% if not sidebarshow_item_group.is_group == 1 %} ({{ sidebarshow_item_group.item_item_group_count }}){% endif %}</a></li>
+				{% endif %}
+			{% endfor %}
+		</ul>
+		{% endif %}
+	</aside>
+</div>

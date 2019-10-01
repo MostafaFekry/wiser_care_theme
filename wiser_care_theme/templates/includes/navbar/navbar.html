@@ -1,0 +1,29 @@
+<div class="header-container container">
+	<div class="header-row">
+		<div class="header-column">
+			<div class="header-row">
+				<div class="header-logo">
+					<a href="{{ url_prefix }}{{ home_page or "/"}}">
+						{{ brand_html or (frappe.get_hooks("brand_html") or ["Home"])[0] }}
+					</a>
+				</div>
+			</div>
+		</div>
+		<div class="header-column justify-content-end">
+			<div class="header-row">
+				<div class="header-nav order-2 order-lg-1">
+					<div class="header-nav-main header-nav-main-square header-nav-main-effect-1 header-nav-main-sub-effect-1" role="navigation">
+						<nav class="collapse">
+							{% include "templates/includes/navbar/dropdown_items.html" %}
+						</nav>
+					</div>
+					<button class="btn header-btn-collapse-nav" data-toggle="collapse" data-target=".header-nav-main nav">
+						<i class="fas fa-bars"></i>
+					</button>
+				</div>
+				{% include "templates/includes/navbar/navbar_login.html" %}
+				{% include "templates/includes/navbar/navbar_search.html" %}
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,45 @@
+<!-- post login tools -->
+{% if not only_static %}
+	<div class="header-nav-features header-nav-features-no-border header-nav-features-lg-show-border order-1 order-lg-2 logged-in" id="website-post-login"
+	data-label="website-post-login" style="display: none">
+		<div class="header-nav-feature header-nav-features-user header-nav-features-user-logged d-inline-flex mx-2 pr-2">
+			<a href="#" class="header-nav-features-toggle">
+				<i class="far fa-user"></i> <span class="full-name"></span>
+			</a>
+			<div class="header-nav-features-dropdown header-nav-features-dropdown-mobile-fixed header-nav-features-dropdown-force-right" id="headerTopUserDropdown">
+				<div class="row">
+					<div class="col">
+						<p class="mb-0 pb-0 text-2 line-height-1 pt-1">{{ _('Hello') }},</p>
+						<p><span class="user-image-wrapper"></span> <strong class="text-color-dark text-4 full-name"></strong></p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col">
+						<ul class="nav nav-list-simple flex-column text-3">
+							{%- for child in post_login -%}
+							<li {% if child.label %}data-label="{{ child.label }}" {% endif %} class="nav-item">
+								{%- if child.url -%}
+									<a href="{{ child.url | abs_url }}" {{ child.target or '' }}
+										rel="nofollow">
+										{{ child.label }}
+									</a>
+								{%- endif -%}
+							</li>
+							{%- endfor -%}
+							<li class='nav-item switch-to-desk hidden'><a href="/desk">{{ _('Switch To Desk') }}</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% if not hide_login %}
+<div class="header-nav-features header-nav-features-no-border header-nav-features-lg-show-border order-1 order-lg-2  btn-login-area">
+	<div class="header-nav-feature header-nav-features-user d-inline-flex mx-2 pr-2">
+		<a href="/login"class="text-decoration-none">
+			<i class="far fa-user"></i> {{ _("Sign in") }}
+		</a>
+	</div>
+</div>
+{% endif %}
+{% endif %}

@@ -1,0 +1,13 @@
+{% if slideshow %}
+{% if slides %}
+<div class="z-index-1 appear-animation" data-appear-animation="fadeInDownShorter" data-appear-animation-delay="500">
+	<div class="owl-carousel owl-theme full-width owl-loaded owl-drag owl-carousel-init m-0 mb-4" data-plugin-options="{'items': 1, 'loop': true, 'nav': true, 'dots': false, 'animateOut': 'fadeOut', 'autoplay': true,'autoplayTimeout': 3000}">
+	{% for slide in slides %}
+		<div>
+			<img src="{{ slide.image }}" class="img-fluid" alt="">
+		</div>
+	{% endfor %}
+	</div>
+</div>
+{% endif %}
+{% endif %}

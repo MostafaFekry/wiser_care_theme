@@ -1,0 +1,44 @@
+{% if not hide_footer_signup %}
+<h4 class="mb-4">{{ _(newsletter_title) }}</h4>
+<p class="pr-1">{{ _(newsletter_description) }}</p>
+<div class="alert alert-success d-none" id="newsletterSuccess">{{ _(newsletter_success_message) }}</div>
+<div class="alert alert-danger d-none" id="newsletterError"></div>
+	<div class="input-group input-group-rounded" class="mr-4 mb-3 mb-md-0">
+		<input class="form-control form-control-sm bg-light" placeholder="{{ _(newsletter_field) }}..." name="footer-subscribe-email" id="footer-subscribe-email" type="text">
+		<span class="input-group-append">
+			<button class="btn btn-light text-color-dark" type="button" id="footer-subscribe-button"><strong>{{ _(newsletter_button) }}</strong></button>
+		</span>
+	</div>
+<script>
+frappe.ready(function() {
+	$("#footer-subscribe-button").click(function() {
+
+		if($("#footer-subscribe-email").val() && validate_email($("#footer-subscribe-email").val())) {
+			$("#footer-subscribe-email").attr('disabled', true);
+			$("#footer-subscribe-button").html("Sending...")
+				.attr("disabled", true);
+			erpnext.subscribe_to_newsletter({
+				email: $("#footer-subscribe-email").val(),
+				callback: function(r) {
+					if(!r.exc) {
+						$("#newsletterError").html(__(""))
+							.addClass("btn-danger").attr("disabled", true);
+						$("#footer-subscribe-button").html(__("Added"))
+							.attr("disabled", true);
+					} else {
+						$("#newsletterError").html(__("Error: Not a valid id?"))
+							.addClass("btn-danger").attr("disabled", false);
+						$("#footer-subscribe-button").html(__("GO!"))
+							.addClass("btn-danger").attr("disabled", false);
+						$("#footer-subscribe-email").val("").attr('disabled', false);
+					}
+				}
+			});
+		}
+		else
+			frappe.msgprint(frappe._("Please enter valid email address"))
+	});
+});
+</script>
+
+{% endif %}

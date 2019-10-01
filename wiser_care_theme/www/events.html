@@ -1,0 +1,69 @@
+{% extends "templates/web.html" %}
+
+{% block title %}{{ _("Events") }}{% endblock %}
+
+{% if slideshow %}
+{% block slideshow %}<!-- slideshow -->
+{% include "templates/includes/slideshow.html" %}
+{% endblock %}
+{% endif %}
+
+{% block page_content %}
+
+<div class="blog-posts">
+							
+		<section class="timeline">
+			<div class="timeline-body">
+			{% for d in exhibitions_item_details %}
+				{% if frappe.format_date(d.last_exhibitions_start_on,"YYYY MM") != frappe.format_date(d.starts_on,"YYYY MM") %}
+				<div class="timeline-date">
+					<h3 class="text-primary font-weight-bold">{{ frappe.format_date(d.starts_on,"YYYY MMMM") or d.starts_on }}</h3>
+				</div>
+				{% endif %}
+				<article class="timeline-box {% if loop.index%2 ==0 %}right{% else %}left{% endif %} post post-medium">
+					<div class="timeline-box-arrow"></div>
+					<div class="p-2">
+						{% if d.image %}
+						<div class="row mb-2">
+	
+							<div class="col">
+								<div class="post-image">
+									<a href="{{ d.route|abs_url }}">
+										<img src="{{ d.image }}" class="img-fluid img-thumbnail img-thumbnail-no-borders rounded-0" alt="" />
+									</a>
+								</div>
+							</div>
+						</div>
+						{% endif %}
+						<div class="row">
+							<div class="col">
+	
+								<div class="post-content">
+									<h2 class="font-weight-semibold text-5 line-height-4 mt-2 mb-2"><a href="{{ d.route|abs_url }}">{{ _(d.exhibition_name) }}</a></h2>
+									{% if d.description %}<p>{{ _(d.description) }}</p>{% endif %}
+								</div>
+	
+							</div>
+						</div>
+						<div class="row">
+							<div class="col">
+								<div class="post-meta">
+									<span><i class="far fa-calendar-alt"></i> {{ frappe.format_date(d.starts_on) or d.starts_on }} </span><br>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col">
+								<a href="{{ d.route|abs_url }}" class="btn btn-xs btn-light text-1 text-uppercase">Read More</a>
+							</div>
+						</div>
+					</div>
+				</article>
+				{% endfor %}
+	
+			</div>
+	
+		</section>
+	
+	</div>
+{% endblock %}
