@@ -112,5 +112,17 @@ def get_data():
 				},
 			]
 		},
+		{
+			"label": _("Reports"),
+			"icon": "fa fa-star",
+			"items": [
+				{
+					"type": "report",
+					"name": "Customer Ledger Statement",
+					"doctype": "GL Entry",
+					"is_query_report": True,
+				},
+			]
+		},
 
 	]
