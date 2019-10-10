@@ -1,0 +1,65 @@
+<h2>{%= __("Customer Statement") %}</h2>
+<hr>
+<table class="table table-bordered">
+	<thead>
+		<tr>
+			<td style="width: 25%"><strong>{%= __("Customer Name") %}:</strong></td>
+			<td style="width: 25%"><strong>{%= filters.party_name %}</strong></td>
+			<td style="width: 25%;text-align: right">{%= __("From") %}:</td>
+			<td style="width: 25%">{%= frappe.datetime.str_to_user(filters.from_date) %}</td>
+		</tr>
+		<tr>
+			<td style="width: 25%">{% if (filters.territory) { %}
+			{%= __("Territory")%}:
+			{% } %}</td>
+			<td style="width: 25%">{% if (filters.territory) { %}
+			{%= filters.territory %}
+			{% } %}</td>
+			<td style="width: 25%;text-align: right;">{%= __("To") %}:</td>
+			<td style="width: 25%">{%= frappe.datetime.str_to_user(filters.to_date) %}</td>
+		</tr>
+	</thead>
+</table>
+
+
+<table class="table table-bordered">
+	<thead>
+		<tr>
+			<th style="width: 15%">{%= __("Date") %}</th>
+			<th style="width: 10%">{%= __("Ref") %}</th>
+			<th style="width: 15%">{%= __("Item") %}</th>
+			<th style="width: 10%">{%= __("Qty") %}</th>
+			<th style="width: 10%">{%= __("Rate") %}</th>
+			<th style="width: 10%">{%= __("Amount") %}</th>
+			<th style="width: 10%">{%= __("Debit") %}</th>
+			<th style="width: 10%">{%= __("Credit") %}</th>
+			<th style="width: 10%">{%= __("Balance (Dr - Cr)") %}</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for(var i=0, l=data.length; i<l; i++) { %}
+			<tr>
+			{% if(data[i].posting_date) { %}
+				<td>{%= frappe.datetime.str_to_user(data[i].posting_date) %}</td>
+				<td colspan="5"><b>{%= data[i].voucher_type %}</b> : {%= data[i].voucher_no %}</td>
+				<td style="text-align: right">{%= format_currency(data[i].debit, filters.presentation_currency) %}</td>
+				<td style="text-align: right">{%= format_currency(data[i].credit, filters.presentation_currency) %}</td>
+				<td style="text-align: right">{%= format_currency(data[i].balance, filters.presentation_currency) %}</td>
+			{% } else if(data[i].item_name) { %}
+				<td></td>
+				<td colspan="2">{%= data[i].item_name %}</td>
+				<td>{%= data[i].qty %}</td>
+				<td>{%= data[i].rate %}</td>
+				<td>{%= data[i].amount %}</td>
+				<td colspan="3"></td>
+			{% } else { %}
+				<td colspan="6"  style="text-align: right"><b>{%= frappe.format(data[i].voucher_no, {fieldtype: "Link"}) || "&nbsp;" %}</b></td>
+				<td style="text-align: right">{%= data[i].voucher_no && format_currency(data[i].debit, filters.presentation_currency) %}</td>
+				<td style="text-align: right">{%= data[i].voucher_no && format_currency(data[i].credit, filters.presentation_currency) %}</td>
+				<td style="text-align: right">{%= format_currency(data[i].balance, filters.presentation_currency) %}</td>
+			{% } %}
+			</tr>
+		{% } %}
+	</tbody>
+</table>
+<p class="text-right text-muted">Printed On {%= frappe.datetime.str_to_user(frappe.datetime.get_datetime_as_string()) %}</p>
