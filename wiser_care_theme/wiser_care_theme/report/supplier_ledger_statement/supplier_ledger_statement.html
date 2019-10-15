@@ -1,22 +1,11 @@
-<h2 class="text-center">{%= __("Customer Statement") %}</h2>
+<h2 class="text-center">{%= __("Supplier Statement") %}</h2>
 <hr>
 <table class="table table-bordered">
 	<thead>
 		<tr>
-			<td style="width: 25%"><strong>{%= __("Customer Name") %}:</strong></td>
+			<td style="width: 25%"><strong>{%= __("Supplier Name") %}:</strong></td>
 			<td style="width: 25%"><strong>{%= filters.party_name %}</strong></td>
-			<td style="width: 25%;text-align: right">{%= __("From") %}:</td>
-			<td style="width: 25%">{%= frappe.datetime.str_to_user(filters.from_date) %}</td>
-		</tr>
-		<tr>
-			<td style="width: 25%">{% if (filters.territory) { %}
-			{%= __("Territory")%}:
-			{% } %}</td>
-			<td style="width: 25%">{% if (filters.territory) { %}
-			{%= filters.territory %}
-			{% } %}</td>
-			<td style="width: 25%;text-align: right;">{%= __("To") %}:</td>
-			<td style="width: 25%">{%= frappe.datetime.str_to_user(filters.to_date) %}</td>
+			<td style="width: 50%;text-align: right">{%= __("From") %}: {%= frappe.datetime.str_to_user(filters.from_date) %} {%= __("To") %}: {%= frappe.datetime.str_to_user(filters.to_date) %}</td>
 		</tr>
 	</thead>
 </table>

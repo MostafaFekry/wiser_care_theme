@@ -49,8 +49,8 @@ def validate_party(filters):
 
 	if party:
 		for d in party:
-			if not frappe.db.exists("Customer", d):
-				frappe.throw(_("Invalid Customer: {0}").format(d))
+			if not frappe.db.exists("Supplier", d):
+				frappe.throw(_("Invalid Supplier: {0}").format(d))
 
 def set_account_currency(filters):
 	if (filters.get('party') and len(filters.party) == 1):
@@ -60,7 +60,7 @@ def set_account_currency(filters):
 		if filters.get("party"):
 			gle_currency = frappe.db.get_value(
 				"GL Entry", {
-					"party_type": "Customer", "party": filters.party[0], "company": filters.company
+					"party_type": "Supplier", "party": filters.party[0], "company": filters.company
 				},
 				"account_currency"
 			)
@@ -68,7 +68,7 @@ def set_account_currency(filters):
 			if gle_currency:
 				account_currency = gle_currency
 			else:
-				account_currency = frappe.db.get_value("Customer", filters.party[0], "default_currency")
+				account_currency = frappe.db.get_value("Supplier", filters.party[0], "default_currency")
 
 		filters["account_currency"] = account_currency or filters.company_currency
 		if filters.account_currency != filters.company_currency and not filters.presentation_currency:
@@ -130,7 +130,7 @@ def get_conditions(filters):
 	if filters.get("group_by") == "Group by Party" and not filters.get("party_type"):
 		conditions.append("party_type in ('Customer', 'Supplier')")
 
-	conditions.append("party_type='Customer'")
+	conditions.append("party_type='Supplier'")
 
 	if filters.get("party"):
 		conditions.append("party in %(party)s")
@@ -263,18 +263,18 @@ def get_accountwise_gle(filters, gl_entries, gle_map):
 
 	for key, value in consolidated_gle.items():
 		entries.append(value)
-		if value.get("voucher_type") == "Sales Invoice":
+		if value.get("voucher_type") == "Purchase Invoice":
 			#entries.append(_dict(item_name="mostafa",amount=0.0))
-			sales_invoice_item = frappe.db.sql("""
+			purchase_invoice_item = frappe.db.sql("""
 				select
 					item_code as item_name, qty, rate, amount
-				from `tabSales Invoice Item`
+				from `tabPurchase Invoice Item`
 				where parent=%s 
 				order by idx
 				""",value.get("voucher_no"), as_dict=1)
-			if sales_invoice_item:
-				for sii in sales_invoice_item:
-					entries.append(frappe._dict(sii))
+			if purchase_invoice_item:
+				for pii in purchase_invoice_item:
+					entries.append(frappe._dict(pii))
 					
 
 	return totals, entries
@@ -386,10 +386,10 @@ def get_columns(filters):
 			"width": 120
 		},
 		{
-			"label": _("Customer"),
+			"label": _("Supplier"),
 			"fieldname": "party",
 			"fieldtype": "Link",
-			"options": "Customer",
+			"options": "Supplier",
 			"width": 100
 		},
 		{
@@ -402,6 +402,12 @@ def get_columns(filters):
 			"fieldname": "against_voucher",
 			"fieldtype": "Dynamic Link",
 			"options": "against_voucher_type",
+			"width": 100
+		},
+		{
+			"label": _("Supplier Invoice No"),
+			"fieldname": "bill_no",
+			"fieldtype": "Data",
 			"width": 100
 		},
 		{

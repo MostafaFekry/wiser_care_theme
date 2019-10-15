@@ -122,6 +122,12 @@ def get_data():
 					"doctype": "GL Entry",
 					"is_query_report": True,
 				},
+				{
+					"type": "report",
+					"name": "Supplier Ledger Statement",
+					"doctype": "GL Entry",
+					"is_query_report": True,
+				},
 			]
 		},
 
